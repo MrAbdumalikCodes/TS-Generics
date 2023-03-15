@@ -1,8 +1,23 @@
 //*********GENERICS***********/
 
-function loggerTime<T>(number: T): T{
-    console.log(new Date());
-    return number
+interface User{
+    name:string
+    age:number
+    email:string
+    level:<T, G, I>(data: T) => G
 }
-loggerTime<number>(9)
-loggerTime<string>('John Smith')
+function userInfo<T>(data: T): T{
+    if(typeof data === 'string'){
+        data.toLocaleLowerCase()
+    }else if(typeof data === 'number'){
+        data.toFixed()
+    }
+    return data
+}
+
+const user = {
+    name:'John',
+    age:24,
+    email:'johncodes@gmail.com'
+}
+const student = userInfo<User>(user)
