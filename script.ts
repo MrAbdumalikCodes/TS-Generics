@@ -1,7 +1,8 @@
 //*********GENERICS***********/
-
-class Car<T>{
-    data : T
+interface ICar{
+    name:string
 }
-
-const a = new Car<number>
+function logger<T extends ICar>(data : T): T{
+    return data
+}
+logger<string>('Generic')
